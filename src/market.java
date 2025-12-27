@@ -1,18 +1,19 @@
 public class market {
-    public String market_name;
-    public String market_adress;
-    public String market_owner;
+    private String marketName;
+    private String ownerName;
+    private String address;
+    private int foundedYear;
 
-    public market(String market_name,String market_owner,String market_adress){
-        setValues(market_name,market_owner,market_adress);
-        System.out.println(getValues());
+    public market(String marketName, String ownerName, String address, int foundedYear) {
+        this.marketName = marketName;
+        this.ownerName = ownerName;
+        this.address = address;
+        this.foundedYear = foundedYear;
     }
-    public void setValues(String market_name,String market_owner,String market_adress){
-        this.market_name = market_name;
-        this.market_adress = market_adress;
-        this.market_owner = market_owner;
+    public int getMarketAge() {
+        return 2025 - foundedYear;
     }
-    public String getValues(){
-        return "Name of Market: "  + market_name + ", Owner of Market: " + market_owner + ", Adress of Market: " + market_adress ;}
-
+    public String getFullInfo() {
+        return "Market name: " + marketName + ", Owner: " + ownerName + ", Address: " + address + ", Founded: " + foundedYear;
+    }
 }

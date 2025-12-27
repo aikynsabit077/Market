@@ -1,24 +1,31 @@
 public class seller {
-    public String seller_name;
-    public String seller_gender;
-    public int seller_age;
-    public int seller_salary;
+    private String name;
+    private int age;
+    private String gender;
+    private int salary;
+    private boolean active;
 
-    public seller(String seller_name,int seller_age,String seller_gender,int seller_salary){
-        setValues(seller_name,seller_age,seller_gender,seller_salary);
-        System.out.println(getValues());
+    public seller(String name, int age, String gender, int salary, boolean active) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.salary = salary;
+        this.active = active;
+        System.out.println(getInfo());
     }
-
-    public void setValues(String seller_name,int seller_age,String seller_gender,int seller_salary){
-        this.seller_name = seller_name;
-        this.seller_age = seller_age;
-        this.seller_gender = seller_gender;
-        this.seller_salary = seller_salary;
+    public int getSalary() {
+        return salary;
     }
-    public String getValues() {
-        return "name: " + seller_name + ", age: " + seller_age + ", salary: " + seller_salary + "tg";
+    public void setActive(boolean active) {
+        this.active = active;
     }
-
-
-
+    public void increaseSalary(int amount) {
+        salary += amount;
+    }
+    public boolean isAdult() {
+        return age >= 18;
+    }
+    public String getInfo() {
+        return "Name: " + name + ", Age: " + age + ", Gender: " + gender + ", Salary: " + salary + " tg" + ", Active: " + active;
+    }
 }
