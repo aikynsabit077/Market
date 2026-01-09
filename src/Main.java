@@ -1,52 +1,102 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        ArrayList<Product> inventory = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int choice;
 
-        System.out.println("    LIST OF PRODUCTS");
-        products p1 = new products(12, "Bread", 190, "Food", true);
-        products p2 = new products(13, "Juice", 630, "Drink", true);
-        products p3 = new products(14, "Meat", 2000, "Food", false);
+        do {
+            System.out.println("--- GROCERY STORE MANAGEMENT ---");
+            System.out.println("1. Add General Product");
+            System.out.println("2. Add Packaged Product");
+            System.out.println("3. Add Fresh Product");
+            System.out.println("4. View All Inventory");
+            System.out.println("5. Process Products (Polymorphism)");
+            System.out.println("6. View Fresh Products (instanceof)");
+            System.out.println("0. Exit");
+            System.out.print("Choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
 
-        p3.applyDiscount(10);
-        System.out.println("After discount: " + p3.getInfo());
-        System.out.println("Is expensive: " + p3.isExpensive());
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Name: ");
+                    String n1 = scanner.nextLine();
+                    System.out.print("Enter Price: ");
+                    double p1 = scanner.nextDouble();
+                    System.out.print("Enter Quantity: ");
+                    int q1 = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter Category: ");
+                    String c1 = scanner.nextLine();
 
-        System.out.println("    LIST OF SELLERS");
-        seller s1 = new seller("Nurali", 18, "Male", 150000, true);
-        seller s2 = new seller("Alisher", 24, "Male", 170000, true);
+                    inventory.add(new Product(n1, p1, q1, c1));
+                    System.out.println("Added successfully!");
+                    break;
 
-        s1.increaseSalary(20000);
-        System.out.println("After salary increase: " + s1.getInfo());
-        System.out.println("Is adult: " + s1.isAdult());
+                case 2:
+                    System.out.print("Enter Name: ");
+                    String n2 = scanner.nextLine();
+                    System.out.print("Enter Price: ");
+                    double p2 = scanner.nextDouble();
+                    System.out.print("Enter Quantity: ");
+                    int q2 = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter Category: ");
+                    String c2 = scanner.nextLine();
+                    System.out.print("Enter Barcode: ");
+                    String b2 = scanner.nextLine();
 
-        System.out.println("    MARKET INFORMATION");
-        market market = new market("Aqqu", "Aikyn", "Nakhmanovich 11", 2015);
+                    inventory.add(new PackagedProduct(n2, p2, q2, c2, b2));
+                    System.out.println("Packaged Product added!");
+                    break;
 
-        System.out.println(market.getFullInfo());
-        System.out.println("Market age: " + market.getMarketAge());
+                case 3:
+                    System.out.print("Enter Name: ");
+                    String n3 = scanner.nextLine();
+                    System.out.print("Enter Price: ");
+                    double p3 = scanner.nextDouble();
+                    System.out.print("Enter Quantity: ");
+                    int q3 = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter Category: ");
+                    String c3 = scanner.nextLine();
+                    System.out.print("Enter Expiry Date: ");
+                    String e3 = scanner.nextLine();
 
+                    inventory.add(new FreshProduct(n3, p3, q3, c3, e3));
+                    System.out.println("Fresh Product added!");
+                    break;
 
-        System.out.println("    POLYMORPHISM PRODUCTS LIST");
+                case 4:
+                    if (inventory.isEmpty()) {
+                        System.out.println("Inventory is empty!");
+                    } else {
+                        for (Product p : inventory) {
+                            System.out.println(p.toString());
+                        }
+                    }
+                    break;
 
-        ArrayList<products> productList = new ArrayList<>();
+                case 5:
+                    for (Product p : inventory) {
+                        p.performAction();
+                    }
+                    break;
 
-        productList.add(new FoodProduct(15, "Cheese", 1200, "Food", true, false));
-        productList.add(new DrinkProduct(16, "Cola", 500, "Drink", true, 1000));
-        productList.add(new FoodProduct(17, "Fish", 2300, "Food", false, true));
-
-        for (products p : productList) {
-            p.showInfo();
-        }
-
-        System.out.println("    FOOD PRODUCTS ONLY");
-
-        for (products p : productList) {
-            if (p instanceof FoodProduct) {
-                FoodProduct food = (FoodProduct) p;
-                food.showInfo();
+                case 6:
+                    for (Product p : inventory) {
+                        if (p instanceof FreshProduct) {
+                            System.out.println(p.toString());
+                            ((FreshProduct) p).checkQuality();
+                        }
+                    }
+                    break;
             }
-        }
-
+            System.out.println();
+        } while (choice != 0);
+        scanner.close();
     }
 }
