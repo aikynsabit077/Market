@@ -1,5 +1,4 @@
 public class Product {
-    // Required: Minimum 4 protected fields
     protected String name;
     protected double price;
     protected int quantity;
@@ -11,19 +10,15 @@ public class Product {
         this.quantity = quantity;
         this.category = category;
     }
-
     public Product() {
         this.name = "Unknown";
         this.price = 0;
         this.quantity = 0;
         this.category = "General";
     }
-
-    // Required: Method to be overridden
     public void performAction() {
         System.out.println("Processing product: " + name);
     }
-
     public String getName() { return name; }
     public double getPrice() { return price; }
     public int getQuantity() { return quantity; }
