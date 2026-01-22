@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        DatabaseConnection.connect();
         ArrayList<Product> inventory = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -85,7 +86,6 @@ public class Main {
                         p.performAction();
                     }
                     break;
-
                 case 6:
                     for (Product p : inventory) {
                         if (p instanceof FreshProduct) {
@@ -97,6 +97,6 @@ public class Main {
             }
             System.out.println();
         } while (choice != 0);
-        scanner.close();//k
+        scanner.close();
     }
 }
