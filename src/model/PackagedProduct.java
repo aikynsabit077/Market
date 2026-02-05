@@ -1,3 +1,4 @@
+package model;
 public class PackagedProduct extends Product {
     private String barcode;
 
@@ -17,7 +18,6 @@ public class PackagedProduct extends Product {
         System.out.println("System updated for barcode: " + barcode);
     }
 
-    // Unique Method 1 [cite: 128]
     public void printLabel() {
         System.out.println("Printing shipping label for " + name);
     }
