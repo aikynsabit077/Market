@@ -34,7 +34,7 @@ public class GroceryMenu {
                         dao.readAll();
                         break;
                     case "3":
-                        System.out.print("ID to update: "); int uid = Integer.parseInt(scanner.nextLine());
+                        System.out.print("ID to update:  "); int uid = Integer.parseInt(scanner.nextLine());
                         System.out.print("New Price: "); double np = Double.parseDouble(scanner.nextLine());
                         System.out.print("New Quantity: "); int nq = Integer.parseInt(scanner.nextLine());
                         dao.update(uid, np, nq);

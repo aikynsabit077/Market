@@ -83,7 +83,7 @@ public class StoreConsoleManager implements StoreConsole {
             String expiryDate = scanner.nextLine();
             products.add(new FreshProduct(name, price, stock, "Fresh Food", expiryDate));
         } else if (type == 2) {
-            System.out.print("Brand: ");
+            System.out.print("Brand:");
             String brand = scanner.nextLine();
             products.add(new PackagedProduct(name, price, stock, "Packaged", brand));
         } else {

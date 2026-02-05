@@ -51,7 +51,7 @@ public class ProductDAO {
             if (rows > 0) System.out.println(">> Update successful.");
             else System.out.println(">> ID not found.");
         } catch (SQLException e) {
-            System.out.println(">> Update Error: " + e.getMessage());
+            System.out.println(">> Update Error:" + e.getMessage());
         }
     }
     public void delete(int id) {
