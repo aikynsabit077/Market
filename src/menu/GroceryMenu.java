@@ -1,4 +1,4 @@
-package menu; // Проверьте, что имя пакета совпадает с вашей папкой
+package menu;
 
 import database.ProductDAO;
 import java.util.Scanner;
@@ -15,6 +15,7 @@ public class GroceryMenu {
             System.out.println("3. Update (Price/Qty)");
             System.out.println("4. Delete (Remove)");
             System.out.println("5. Search (By Name)");
+            System.out.println("6. Search (By Min Price)");
             System.out.println("0. Exit");
             System.out.print("Action: ");
 
@@ -47,6 +48,11 @@ public class GroceryMenu {
                     case "5":
                         System.out.print("Search Name: ");
                         dao.searchByName(scanner.nextLine());
+                        break;
+                    case "6":
+                        System.out.print("Enter Minimum Price: ");
+                        double minP = Double.parseDouble(scanner.nextLine());
+                        dao.searchByMinPrice(minP);
                         break;
                 }
             } catch (Exception e) {

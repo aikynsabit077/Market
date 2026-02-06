@@ -1,7 +1,7 @@
-import menu.GroceryMenu; // Добавьте эту строку, чтобы Main увидел Menu
+import menu.GroceryMenu;
 
 public class Main {
     public static void main(String[] args) {
         new GroceryMenu().run();
     }
-}//
+}
