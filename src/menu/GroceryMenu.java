@@ -16,6 +16,9 @@ public class GroceryMenu {
             System.out.println("4. Delete (Remove)");
             System.out.println("5. Search (By Name)");
             System.out.println("6. Search (By Min Price)");
+            System.out.println("7. Search (By ID)");
+            System.out.println("8. Search (Price Range)");
+            System.out.println("9. Polymorphism Demo");
             System.out.println("0. Exit");
             System.out.print("Action: ");
 
@@ -54,10 +57,30 @@ public class GroceryMenu {
                         double minP = Double.parseDouble(scanner.nextLine());
                         dao.searchByMinPrice(minP);
                         break;
+                    case "7":
+                        System.out.print("Enter ID: ");
+                        int sid = Integer.parseInt(scanner.nextLine());
+                        dao.getStaffById(sid);
+                        break;
+                    case "8":
+                        System.out.print("Min Price: ");
+                        double min = Double.parseDouble(scanner.nextLine());
+                        System.out.print("Max Price: ");
+                        double max = Double.parseDouble(scanner.nextLine());
+                        dao.searchByPriceRange(min, max);
+                        break;
+                    case "9":
+                        polymorphismDemo();
+                        break;
                 }
+
             } catch (Exception e) {
                 System.out.println("Input Error:");
             }
         }
+    }
+    public void polymorphismDemo() {
+        System.out.println("\n Polymorphism Demonstration");
+        System.out.println("Executing polymorphism logic...");
     }
 }
